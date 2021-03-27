@@ -14,7 +14,6 @@
 
 <script>
 import PostForm from '@/components/blog/PostForm'
-
 export default {
   name: 'EditPost',
   components: {
@@ -27,9 +26,7 @@ export default {
   },
   methods: {
     onCancelClicked () {
-      this.$router.push({
-        name: 'blog-home'
-      })
+      this.$router.go(-1)
     },
     onSubmitClicked (values) {
       const payload = {
@@ -37,12 +34,9 @@ export default {
         title: values.title,
         body: values.body
       }
-
       this.$store.dispatch('patchPost', payload)
         .then(() => {
-          this.$router.push({
-            name: 'blog-home'
-          })
+          this.$router.go(-1)
         })
         .catch(error => {
           alert('Failed to save')

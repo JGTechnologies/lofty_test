@@ -1,20 +1,20 @@
 <template>
   <div class="container">
-    <div class="row my-5 py-3">
-      <div class="col-lg-8 offset-2">
-        <div class="row">
-          <Button
-            text="Create New Post"
-            background="green"
-            color="white"
-            class="ml-auto mb-2"
-            @clicked="onNewPostClicked"
-          />
-        </div>
-        <div class="row">
+    <div class="my-5 py-3">
+      <div class="row">
+        <Button
+          text = "Create New Post"
+          background = "green"
+          color = "white"
+          class = "ml-auto mb-2"
+          @clicked = "onNewPostClicked"
+        />
+      </div>
+      <div class="row">
+        <div class="col-12">
           <Posts
-            :posts="posts"
-            @postDeleted="onPostDeleted"
+            :posts = "posts"
+            @postDeleted = "onPostDeleted"
           />
         </div>
       </div>
@@ -46,7 +46,7 @@ export default {
   created () {
     this.$store.dispatch('getPosts')
       .then(posts => {
-        this.posts = posts.reverse()
+        this.posts = posts
       })
       .catch(error => {
         console.log('error')

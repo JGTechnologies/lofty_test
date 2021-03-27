@@ -7,8 +7,10 @@ import Register from '@/views/Register.vue'
 import PasswordReset from '@/views/PasswordReset.vue'
 
 import BlogCreatePost from '@/views/blog/CreatePost.vue'
+import BlogEditComment from '@/views/blog/EditComment.vue'
 import BlogEditPost from '@/views/blog/EditPost.vue'
 import BlogPostList from '@/views/blog/Home.vue'
+import BlogViewPost from '@/views/blog/ViewPost.vue'
 
 import store from '@/store/index.js'
 
@@ -18,8 +20,10 @@ const routes = [
   { path: '/register', name: 'register', component: Register },
   { path: '/password-reset', name: 'password-reset', component: PasswordReset },
   { path: '/blog', name: 'blog-home', component: BlogPostList },
+  { path: '/blog/comments/:id/edit', name: 'blog-edit-comment', component: BlogEditComment },
   { path: '/blog/posts', name: 'blog-create-post', component: BlogCreatePost },
-  { path: '/blog/posts/:id', name: 'blog-edit-post', component: BlogEditPost }
+  { path: '/blog/posts/:id', name: 'blog-post-details', component: BlogViewPost },
+  { path: '/blog/posts/:id/edit', name: 'blog-edit-post', component: BlogEditPost }
 ]
 
 Vue.use(VueRouter)

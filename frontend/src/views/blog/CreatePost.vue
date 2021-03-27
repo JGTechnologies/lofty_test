@@ -33,8 +33,6 @@ export default {
         body: values.body
       }
 
-      console.log(payload)
-
       this.$store.dispatch('createPost', payload)
         .then(() => {
           this.$router.push({
