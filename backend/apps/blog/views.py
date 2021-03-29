@@ -5,31 +5,31 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .models import (
-  Comment,
-  Post,
+    Comment,
+    Post,
 )
 from .serializers import (
-  CommentSerializer,
-  PostSerializer,
+    CommentSerializer,
+    PostSerializer,
 )
 
 
 class PostViewSet(viewsets.ModelViewSet):
-  queryset = Post.objects.all()
-  serializer_class = PostSerializer
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-  @action(methods=['GET'], detail=True)
-  def comments(self, request, pk=None):
-    try:
-      post = Post.objects.get(pk=pk)
-    except Post.DoesNotExist:
-      return Response(status=status.HTTP_404_NOT_FOUND)
+    @action(methods=['GET'], detail=True)
+    def comments(self, request, pk=None):
+        try:
+            post = Post.objects.get(pk=pk)
+        except Post.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-    comments = post.comments.all()
-    serializer = CommentSerializer(comments, many=True)
-    return Response(status=status.HTTP_200_OK, data=serializer.data)
+        comments = post.comments.all()
+        serializer = CommentSerializer(comments, many=True)
+        return Response(status=status.HTTP_200_OK, data=serializer.data)
 
 
 class CommentViewSet(viewsets.ModelViewSet):
-  queryset = Comment.objects.all()
-  serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
